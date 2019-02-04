@@ -6,6 +6,10 @@ const app = express();
 //Database
 const db = require('./config/database');
 app.set('view engine', 'pug');
+//body parser
+app.use(bodyParser.urlencoded({extended: false}));
+//add static CSS files
+app.use('/static', express.static('public'));
 
 
 //test db
