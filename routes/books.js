@@ -27,4 +27,42 @@ router.post('/new', (req, res) => {
         .then(books => res.redirect('/'))
         .catch(err => console.log(err))
 });
+
+//route to update book
+router.get('/:id', (req, res) => {
+    Books.findById(req.params.id)
+      .then(book => {
+          res.render('update-book', {book});
+      })
+      .catch(err => console.log(err))
+});
+
+//post route to update database
+router.post('/:id', (req, res) => {
+    Books.findById(req.params.id)
+      .then(Book => {
+          if(Book){
+              return Book.update(req.body);
+          } else{
+              res.send(404);
+          }
+      })
+      .then(() => res.redirect('/'))
+      .catch(err => console.log(err))
+});
+
+//route to delete
+router.post('/:id/delete', (req, res) => {
+    Books.findById(req.params.id)
+      .then(Book => {
+          if(Book){
+              return Book.destroy();
+          } else{
+              res.send(404);
+          }
+      })
+      .then(() => res.redirect('/'))
+      .catch(err => console.log(err))
+});
+
 module.exports = router;
