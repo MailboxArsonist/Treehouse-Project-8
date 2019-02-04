@@ -1,0 +1,19 @@
+extends layout
+
+block content
+    table
+        tr
+            th Title
+            th Author
+            th Genre
+            th Year
+        each book in books
+            tr
+                td
+                    a(href='#')= book.dataValues.title
+                td
+                    a= book.dataValues.author
+                td
+                    a= book.dataValues.genre
+                td
+                    a= book.dataValues.year
