@@ -2,6 +2,11 @@ extends layout
 
 block content
     form(action='/books/new' method='POST')
+        if(err)
+            h2.err Ooops an error occured!
+            ul.err
+                each error in err
+                    li=error.message
         p
             label(for='title') Title
             input#title(name='title', type='text')

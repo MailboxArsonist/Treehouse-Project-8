@@ -24,7 +24,14 @@ router.post('/new', (req, res) => {
         genre,
         year
     })
-        .then(books => res.redirect('/'))
+        .then(() => res.redirect('/'))
+        .catch(err => {
+            if(err.name === "SequelizeValidationError"){
+              res.render('new-book', {err: err.errors});
+            } else {
+                throw err;
+            }
+        })
         .catch(err => console.log(err))
 });
 
@@ -48,6 +55,13 @@ router.post('/:id', (req, res) => {
           }
       })
       .then(() => res.redirect('/'))
+      .catch(err => {
+          if(err.name === "SequelizeValidationError"){
+            res.render('update-book', { err: err.errors});
+          } else {
+              throw err;
+          }
+      })
       .catch(err => console.log(err))
 });
 
