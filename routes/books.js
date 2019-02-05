@@ -2,8 +2,11 @@ const express = require('express');
 const router = express.Router();
 const db = require('../config/database');
 const Books = require('../models/books');
+const Sequelize = require('sequelize')
+const Op = Sequelize.Op;
 
-//route for /books
+
+//route for /books, will show all books
 router.get('/', (req, res) => {
     Books.findAll()
       .then(books => {
@@ -35,6 +38,29 @@ router.post('/new', (req, res) => {
         .catch(err => console.log(err))
 });
 
+router.get('/search', (req, res) => {
+    const { term } = req.query;
+    // term = term.toLowerCase();
+    Books.findAll({where: {[Op.or]: [
+        {
+            title: {[Op.like] : '%' + term + '%'}
+        },
+        {
+            author: {[Op.like] : '%' + term + '%'}
+        },
+        {
+            genre: {[Op.like] : '%' + term + '%'}
+        },
+        {
+            year: {[Op.like] : '%' + term + '%'}
+        }
+    ]}})
+        .then(books => {
+            res.render('search-results', {books, term});
+        })
+        .catch(err => console.log(err));
+});
+
 //route to update book
 router.get('/:id', (req, res) => {
     Books.findById(req.params.id)
@@ -51,13 +77,16 @@ router.post('/:id', (req, res) => {
           if(Book){
               return Book.update(req.body);
           } else{
-              res.send(404);
+              res.render('error');
           }
       })
       .then(() => res.redirect('/'))
       .catch(err => {
           if(err.name === "SequelizeValidationError"){
-            res.render('update-book', { err: err.errors});
+            let book = Books.build(req.body);
+            book.dataValues.id = req.params.id;
+            console.log(book)
+            res.render('update-book', { book, err: err.errors});
           } else {
               throw err;
           }
@@ -72,7 +101,7 @@ router.post('/:id/delete', (req, res) => {
           if(Book){
               return Book.destroy();
           } else{
-              res.send(404);
+              res.render('error');
           }
       })
       .then(() => res.redirect('/'))
