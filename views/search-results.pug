@@ -1,0 +1,25 @@
+extends layout
+
+block content
+    h3 Search Results for "#{term}"
+    p
+        a.button(href='/') Back to all books
+    if(books.length > 0)
+        table
+            tr
+                th Title
+                th Author
+                th Genre
+                th Year
+            each book in books
+                tr
+                    td
+                        a(href="/books/" + book.dataValues.id)= book.dataValues.title
+                    td
+                        a= book.dataValues.author
+                    td
+                        a= book.dataValues.genre
+                    td
+                        a= book.dataValues.year
+    else
+        h3 No results found
