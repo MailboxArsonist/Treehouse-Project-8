@@ -15,7 +15,7 @@ block content
             th Genre
             th Year
         each book in books
-            tr
+            tr.bookRow
                 td
                     a(href="/books/" + book.dataValues.id)= book.dataValues.title
                 td
@@ -24,3 +24,6 @@ block content
                     a= book.dataValues.genre
                 td
                     a= book.dataValues.year
+    div.links
+    script(src='/static/js/app.js')
+    

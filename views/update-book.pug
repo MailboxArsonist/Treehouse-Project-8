@@ -1,9 +1,8 @@
 extends layout
 
 block content
-
-    h1 Update Book
-    form(action='/books/' + book.dataValues.id method='POST')
+    form(action='/books/' + book.dataValues.id method='POST', class='update-form')
+        h1 Update Book
         if(err)
             h2.error Ooops an error occured!
             ul.error
@@ -21,11 +20,10 @@ block content
         p
             label(for='year') Year
             input#year(name='year', type='text', value=book.dataValues.year)
-        p
+        div(id='updateBookDiv')
             input(type='submit', value='Update Book', id='update')
+            form(method='post', action='/books/' + book.dataValues.id + '/delete', onsubmit="return confirm('Do you really want to delete this book?');")
+                a.button(href='/books', id='cancel') Cancel
+                input(type='submit', value='Delete Book', id='delete')
 
-    form(method='post', action='/books/' + book.dataValues.id + '/delete', onsubmit="return confirm('Do you really want to delete this book?');")
-        p
-            a.button(href='/books', id='cancel') Cancel
-        p
-            input(type='submit', value='Delete Book', id='delete')
+    

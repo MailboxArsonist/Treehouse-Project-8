@@ -1,8 +1,8 @@
 extends layout
 
 block content
-    form(action='/books/new' method='POST')
-        h1 Create a new book
+    form(action='/books/new' method='POST', id='create-book')
+        h1 Create Book Entry
         if(err)
             h2.error Ooops an error occured!
             ul.error
@@ -20,7 +20,8 @@ block content
         p
             label(for='year') Year
             input#year(name='year', type='text')
-        p
-            input(type='submit', value='Create New Book')
-        p
-            a.button(href='/books') Cancel
+        div
+            p.buttons-new
+                input(type='submit', value='Create New Book', id='create-button')
+            p.buttons-new
+                a.button(href='/books', id='cancel-create') Cancel
