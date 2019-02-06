@@ -2,6 +2,8 @@ body {
   padding: 10px 50px 50px;
   font-family: 'Mukta', sans-serif;
   background-image: url('../img/book-stack-books-education-48126.jpg');
+  height: auto;
+  width: auto;
   background-position: center; 
   background-repeat: no-repeat; 
   background-size: cover;
@@ -74,7 +76,6 @@ ul {
 }
 
 h2 {
-  border-top: 2px solid #e7e7e7;
   padding-top: 20px;
 }
 
@@ -202,9 +203,9 @@ li a.active, li a:hover {
 }
 
 .results{
-  width: 50%;
-  margin-left: 5%;
-  margin-right: 45%;
+  width: 80%;
+  margin-right: 10%;
+  margin-left: 10%;
   margin-top: 40px;
 }
 
