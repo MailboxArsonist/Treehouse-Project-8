@@ -4,11 +4,13 @@ const div = document.querySelector('.links');
 
 //search form, checks for empty string
 const searchForm = document.querySelector('.search-form');
-searchForm.addEventListener('submit', (e) => {
-    if(searchForm.firstElementChild.value === ''){
-        e.preventDefault();
-    }
-});
+if(searchForm){
+    searchForm.addEventListener('submit', (e) => {
+        if(searchForm.firstElementChild.value === ''){
+            e.preventDefault();
+        }
+    });
+}
 
 //Clears all rows
 const clearPage = () => {
