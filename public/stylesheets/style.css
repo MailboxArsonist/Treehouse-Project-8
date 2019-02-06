@@ -12,7 +12,6 @@ h1 {
 }
 
 a {
-  color: #019875;
   text-decoration: none;
   font-weight: bold;
   transition: 0.4s;
@@ -54,6 +53,13 @@ a.button:hover, input[type=submit]:hover {
 }
 #update:hover {
   background-color: #32965D;
+}
+
+#create-button:hover {
+  background-color: #32965D;
+}
+#cancel-create:hover {
+  background-color: #FFCD66;
 }
 
 p {
@@ -158,4 +164,62 @@ table{
   width: 70%;
   margin: auto;
   padding: 20px;
+}
+.update-form{
+  width: 50%;
+  margin-left: 5%;
+  margin-right: 45%;
+}
+#update, #cancel, #delete{
+  margin-left: 15px;
+  display: inline-block;
+}
+li a {
+  border: 1px solid white;
+  border-radius: 4px;
+  padding: 4px 10px;
+  color: gray;
+}
+li {
+  display: inline-block;
+  margin-right: 10px;
+}
+.links {
+  width: 80%;
+  margin-left: 10%;
+  margin-right: 10%;
+  text-align: center;
+  margin-top: 30px;
+}
+/* ul {
+  width: 100%;
+text-align: center;
+} */
+
+li a.active, li a:hover {
+  border-color: #C4DBED;
+  color: black;
+}
+
+.results{
+  width: 50%;
+  margin-left: 5%;
+  margin-right: 45%;
+  margin-top: 40px;
+}
+
+.no-results {
+  font-weight: 300; 
+}
+
+h3.search-results {
+  margin-top: 20px;
+}
+
+.buttons-new{
+  display: inline-block;
+}
+
+#cancel-create {
+  margin-left: 10px;
 }
