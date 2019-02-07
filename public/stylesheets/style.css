@@ -171,7 +171,7 @@ table{
   margin-left: 5%;
   margin-right: 45%;
 }
-#update, #cancel, #delete{
+#update{
   margin-left: 15px;
   display: inline-block;
 }
@@ -224,3 +224,25 @@ h3.search-results {
 #cancel-create {
   margin-left: 10px;
 }
+.update-p{
+  display: inline-block
+}
+
+#updateBookDiv{
+  width: 50%;
+  margin-left: 5%;
+  margin-right: 45%;
+}
+
+#delete{
+  display: block;
+  margin-left: 15px;
+  margin-bottom: 15px;
+}
+
+#cancel {
+  margin-left: 15px;
+  margin-bottom: 17px;
+  display: inline-block;
+}
+
